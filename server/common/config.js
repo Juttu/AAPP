@@ -1,5 +1,5 @@
 exports.PORT = process.env.PORT || 8080;
-exports.MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost/mongoHeadlines';
+exports.MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/app_db';
 exports.NODE_ENV = process.env.NODE_ENV || 'development';
 exports.OTP_SECRET = process.env.OTP_SECRET || 'secret';
 exports.JWT_SECRET = process.env.JWT_SECRET || 'secret';
