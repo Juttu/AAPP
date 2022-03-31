@@ -1,4 +1,4 @@
-import React   from "react";
+import React from "react";
 import Login, {ILoginProps} from "components/auth/Login";
 import {useRecoilRefresher_UNSTABLE, useRecoilState, useRecoilValue, useRecoilValueLoadable} from "recoil";
 import {authState, messageState} from "recoil/atoms";
@@ -11,7 +11,6 @@ import {InputText} from "primereact/inputtext";
 import {Button} from "primereact/button";
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import RewardService from "services/reward.service";
-import { json } from "stream/consumers";
 
 interface IAuthBlockProps {
   auth: any;
@@ -78,7 +77,7 @@ function Home() {
                      login={{onLoginSuccess}} />
           {auth.isLoggedIn && auth.isRegistered && userLoadable.state === 'hasValue' && userLoadable.contents && <React.Fragment>
               <h3>Welcome, {userLoadable.contents.name}</h3>
-              <CopyToClipboard text={`http://localhost:30000/${userLoadable.contents._id}`} onCopy={() => {
+              <CopyToClipboard text={`${window.location.origin}/${userLoadable.contents._id}`} onCopy={() => {
                 setMessages([
                   ...messages,
                   {
@@ -90,7 +89,7 @@ function Home() {
               }}>
                   <div className="p-inputgroup">
                       <div className="p-inputgroup">
-                          <InputText placeholder="Keyword" value={`http://localhost:30000/${userLoadable.contents._id}`}/>
+                          <InputText placeholder="Keyword" value={`${window.location.origin}/${userLoadable.contents._id}`}/>
                           <Button icon="pi pi-copy" className="p-button-warning"/>
                       </div>
                   </div>

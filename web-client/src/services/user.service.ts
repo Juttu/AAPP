@@ -34,7 +34,7 @@ export class UserService {
       const auth = getRecoil(authState);
       setRecoil(authState, {
         ...auth,
-        isRegistered: true,
+        isRegistered: data.isRegistered,
       })
       return data;
     } catch (error: any) {
@@ -61,6 +61,11 @@ export class UserService {
         summary: 'Success',
         detail: 'Profile updated successfully'
       });
+      const auth = getRecoil(authState);
+      setRecoil(authState, {
+        ...auth,
+        isRegistered: true,
+      })
       return true;
     } catch (error: any) {
       this.messageService.addMessage({
