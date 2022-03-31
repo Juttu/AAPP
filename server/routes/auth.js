@@ -3,9 +3,10 @@ const router = express.Router();
 const twilio = require('twilio');
 const hotp = require('otplib').hotp;
 const UserModel = require('../models/user.model');
-const {TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, OTP_SECRET, TWILIO_MESSAGING_SERVICE_SID} = require("../common/config");
+const {F2S_API_KEY, OTP_SECRET} = require("../common/config");
 const {createJwtToken} = require("../utils/token.util");
 const RewardModel = require("../models/reward.model");
+const axios = require("axios");
 
 async function updateReferral(referrer, referee) {
     const user = await UserModel.findById(referrer);
@@ -25,19 +26,29 @@ async function updateReferral(referrer, referee) {
     return true;
 }
 
-async function generateOTP(user) {
-    user.phone.counter++;
-    await user.save();
-    const token = hotp.generate(OTP_SECRET, user.phone.counter);
-    const client = new twilio(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
-    await client.messages.create(
-        {
-            body: `Dear user, Your 6-digit OTP is ${token} for early access to the app.`,
-            to: user.phone.number,
-            messagingServiceSid: TWILIO_MESSAGING_SERVICE_SID
+function generateOTP(user) {
+    return hotp.generate(OTP_SECRET, user.phone.counter + 1);
+}
+
+async function sendOTP(user) {
+    const otp = generateOTP(user);
+    // fast2sms doesn't need country code
+    const phone = user.phone.number.substring(3);
+    const config = {
+        method: 'POST',
+        url: 'https://www.fast2sms.com/dev/bulkV2',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': F2S_API_KEY
+        },
+        data: {
+            "route": "v3",
+            "sender_id": "payBIS",
+            "message": `Your 6-digit OTP is ${otp} for early access to the app.`,
+            "numbers": `${phone}`
         }
-    )
-    return user;
+    }
+    return axios(config);
 }
 
 router.post('/requestOTP', async (req, res) => {
@@ -46,8 +57,14 @@ router.post('/requestOTP', async (req, res) => {
     if (!user) {
         user = new UserModel({phone: {number: phone}});
     }
-    await generateOTP(user);
-    return res.sendStatus(201);
+    try {
+        await sendOTP(user);
+        user.phone.counter++;
+        await user.save();
+        return res.sendStatus(201);
+    } catch (e) {
+        return res.sendStatus(500);
+    }
 });
 
 router.post('/verifyOTP', async (req, res, next) => {
