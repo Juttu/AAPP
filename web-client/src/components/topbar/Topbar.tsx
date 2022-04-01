@@ -39,7 +39,7 @@ function TopBar() {
   const [rewardsDialog, setRewardsDialog] = React.useState(false);
   const authService: AuthService = AuthService.Instance;
   const items = [
-    {
+    auth.isLoggedIn && {
       label: 'My rewards',
       icon: 'pi pi-fw pi-star',
       command: () => {
@@ -55,7 +55,7 @@ function TopBar() {
               onHide={() => setRewardsDialog(false)}>
         <MyRewards />
       </Dialog>
-      <CustomMenubar model={items} end={
+      <CustomMenubar model={items as any} end={
         <React.Fragment>
           {auth.isLoggedIn && <IconButton name="logout"
                                           icon="pi pi-sign-out"

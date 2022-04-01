@@ -5,7 +5,6 @@ import {authState, messageState} from "recoil/atoms";
 import Register from "components/user/Register";
 import {currentUserQuery} from "recoil/selectors";
 import {SectionDiv} from "components/styled/SectionDiv";
-import {Image} from "primereact/image";
 import Reward from "components/user/Reward";
 import {InputText} from "primereact/inputtext";
 import {Button} from "primereact/button";
@@ -126,27 +125,6 @@ function Home() {
             <source src={require('../assets/Spllit_bill_willframe.mp4')} type="video/webm" />
             <source src={require('assets/Spllit_bill_willframe.mp4')} type="video/mp4" />
           </video>
-        </div>
-  
-        <div className="col-12 lg:col-6 flex flex-column align-items-center justify-content-center bg-green-400">
-          <h2 className="mb-0">Track Expenses</h2>
-          <p className="text-center">Keep track of shared expenses, balances, and who owes who.</p>
-          <Image className="mt-2" src={'https://www.splitwise.com/assets/home_page/fixtures/asset1.png'} alt=""/>
-        </div>
-        <div className="col-12 lg:col-6 flex flex-column align-items-center justify-content-center bg-blue-400">
-          <h2 className="mb-0">Track Expenses</h2>
-          <p className="text-center">Keep track of shared expenses, balances, and who owes who.</p>
-          <Image className="mt-2" src={'https://www.splitwise.com/assets/home_page/fixtures/asset1.png'} alt=""/>
-        </div>
-        <div className="col-12 lg:col-6 flex flex-column align-items-center justify-content-center bg-blue-400">
-          <h2 className="mb-0">Track Expenses</h2>
-          <p className="text-center">Keep track of shared expenses, balances, and who owes who.</p>
-          <Image className="mt-2" src={'https://www.splitwise.com/assets/home_page/fixtures/asset1.png'} alt=""/>
-        </div>
-        <div className="col-12 lg:col-6 flex flex-column align-items-center justify-content-center bg-green-400">
-          <h2 className="mb-0">Track Expenses</h2>
-          <p className="text-center">Keep track of shared expenses, balances, and who owes who.</p>
-          <Image className="mt-2" src={'https://www.splitwise.com/assets/home_page/fixtures/asset1.png'} alt=""/>
         </div>
       </div>
     </SectionDiv>
