@@ -2,13 +2,17 @@ const express = require('express');
 const router = express.Router();
 const RewardModel = require('../models/reward.model');
 
-const isEligibleForReward = (rewardObj) => {
+const remainingRewards = (rewardObj) => {
     if (!rewardObj) {
-        return true;
+        return 1;
     }
     const rewardsCount = rewardObj.rewards.length;
     const referralsCount = rewardObj.referees.length;
-    return referralsCount - rewardsCount >= 0;
+    return referralsCount - rewardsCount + 1;
+}
+
+const isEligibleForReward = (rewardObj) => {
+    return remainingRewards(rewardObj) >= 1;
 
 }
 
@@ -23,8 +27,17 @@ router.get('/', async (req, res) => {
     });
 });
 
+router.get('/remaining', async (req, res) => {
+    const user = req.user;
+    const rewardObj = await RewardModel.findOne({
+        user: user._id
+    });
+    res.status(200).json({
+        remainingRewards: remainingRewards(rewardObj)
+    });
+});
 
-router.post('/', async function (req, res, next) {
+router.post('/', async (req, res, next) => {
     const user = req.user;
     const { reward } = req.body;
     let rewardObj = await RewardModel.findOne({

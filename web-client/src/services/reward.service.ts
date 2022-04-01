@@ -23,6 +23,19 @@ export class RewardService {
         }
     }
 
+    getRemainingRewards = async () => {
+        const options = {
+            method: 'GET',
+            url: '/reward/remaining',
+        };
+        try {
+            const response = await axios.get(options.url);
+            return response.data.remainingRewards;
+        } catch (error) {
+            return 0;
+        }
+    }
+
     addUserReward = async ({ reward }: { reward: string }) => {
         const options = {
             method: 'POST',

@@ -3,6 +3,7 @@ import {animated, useSpring} from 'react-spring';
 import {Button} from "primereact/button";
 import {useRecoilState} from "recoil";
 import {authState, messageState} from "recoil/atoms";
+import RewardService from "services/reward.service";
 
 const list = [
   {
@@ -51,10 +52,18 @@ function Reward({onSpinReward}: { onSpinReward: (arg0: string) => void }) {
   const [offsetIdx, setOffsetIdx] = useState(offsets.findIndex(o => o === OFFSET));
   const [acc, setAcc] = useState(0);
   const config = {mass: 50, tension: 200, friction: 200, precision: 0.001};
+  const [remainingRewards, setRemainingRewards] = useState(0);
   const [animateStyles, setAnimateStyles] = useSpring(() => ({
     transform: "rotate(0deg)",
     immediate: false,
   }));
+
+  useEffect(() => {
+    const rewardService = RewardService.Instance;
+    rewardService.getRemainingRewards().then(remaining => {
+      setRemainingRewards(remaining);
+    });
+  })
 
   useEffect(() => {
     const initialAngle = map(acc, 0, 100, 0, 1800);
@@ -111,6 +120,9 @@ function Reward({onSpinReward}: { onSpinReward: (arg0: string) => void }) {
 
   return (
     <div style={{overflowX: "hidden"}}>
+      <div className="flex flex-column align-items-center">
+        <h4>You have {remainingRewards.toString()} spins left!</h4>
+      </div>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 500 500"
