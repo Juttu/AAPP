@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Login, {ILoginProps} from "components/auth/Login";
 import {useRecoilRefresher_UNSTABLE, useRecoilState, useRecoilValue, useRecoilValueLoadable} from "recoil";
 import {authState, messageState} from "recoil/atoms";
@@ -44,10 +44,17 @@ function Home() {
   const userLoadable = useRecoilValueLoadable(currentUserQuery);
   const refreshUserLoadable = useRecoilRefresher_UNSTABLE(currentUserQuery);
   const rewardService: RewardService = RewardService.Instance;
+  const [referralLink, setReferralLink] = React.useState('');
 
   const onLoginSuccess = () => {
     refreshUserLoadable();
   }
+
+  useEffect(() => {
+    if (userLoadable.state === 'hasValue' && auth.isLoggedIn) {
+      setReferralLink(`${window.location.origin}?referrer=${userLoadable.contents._id}`);
+    }
+  }, [userLoadable])
 
   const onSpinReward = async (reward: string) => {
     if (reward === "RETRY") {
@@ -77,7 +84,7 @@ function Home() {
                      login={{onLoginSuccess}} />
           {auth.isLoggedIn && auth.isRegistered && userLoadable.state === 'hasValue' && userLoadable.contents && <React.Fragment>
               <h3>Welcome, {userLoadable.contents.name}</h3>
-              <CopyToClipboard text={`${window.location.origin}/${userLoadable.contents._id}`} onCopy={() => {
+              <CopyToClipboard text={referralLink} onCopy={() => {
                 setMessages([
                   ...messages,
                   {
@@ -89,7 +96,7 @@ function Home() {
               }}>
                   <div className="p-inputgroup">
                       <div className="p-inputgroup">
-                          <InputText placeholder="Keyword" value={`${window.location.origin}/${userLoadable.contents._id}`}/>
+                          <InputText placeholder="Keyword" value={referralLink}/>
                           <Button icon="pi pi-copy" className="p-button-warning"/>
                       </div>
                   </div>

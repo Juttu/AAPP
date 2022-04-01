@@ -24,7 +24,7 @@ function Login({onLoginSuccess}: ILoginProps) {
     if (query.get("referrer")) {
       setReferrer(query.get("referrer"));
     }
-  }, [referrer, query]);
+  }, [query]);
 
   const onPhoneSubmit = async (phone: string) => {
     const result = await authService.requestOTP({phone});
