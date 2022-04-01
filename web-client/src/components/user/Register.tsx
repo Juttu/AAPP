@@ -35,7 +35,7 @@ function Register() {
     return (
         <React.Fragment>
             <form onSubmit={formik.handleSubmit} className="flex w-full flex-column align-items-center">
-                <div className="field">
+                <div className="field flex flex-column">
                     <span className="p-float-label p-input-icon-right w-20rem">
                         <i className="pi pi-user"/>
                         <InputText id="name" name="name" value={formik.values.name} onChange={formik.handleChange}
@@ -45,7 +45,7 @@ function Register() {
                     </span>
                     <small className="p-error">{getFormErrorMessage(formik, 'name')}</small>
                 </div>
-                <div className="field">
+                <div className="field flex flex-column mt-4">
                     <span className="p-float-label p-input-icon-right w-20rem">
                         <i className="pi pi-envelope"/>
                         <InputText id="email" name="email" value={formik.values.email} onChange={formik.handleChange}

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {animated, useSpring} from 'react-spring';
 import {Button} from "primereact/button";
-import {useRecoilState} from "recoil";
+import {useRecoilState, useRecoilValue} from "recoil";
 import {authState, messageState} from "recoil/atoms";
 import RewardService from "services/reward.service";
 
@@ -49,6 +49,7 @@ function Reward({onSpinReward}: { onSpinReward: (arg0: string) => void }) {
   const cx = 250;
   const cy = 250;
   const [power, setPower] = useState(0);
+  const auth = useRecoilValue(authState);
   const [offsetIdx, setOffsetIdx] = useState(offsets.findIndex(o => o === OFFSET));
   const [acc, setAcc] = useState(0);
   const config = {mass: 50, tension: 200, friction: 200, precision: 0.001};
@@ -63,7 +64,7 @@ function Reward({onSpinReward}: { onSpinReward: (arg0: string) => void }) {
     rewardService.getRemainingRewards().then(remaining => {
       setRemainingRewards(remaining);
     });
-  })
+  }, [auth])
 
   useEffect(() => {
     const initialAngle = map(acc, 0, 100, 0, 1800);
