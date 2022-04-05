@@ -50,13 +50,15 @@ export class RewardService {
                 severity: 'success',
                 summary: 'Reward added',
                 detail: `You have won ${reward} stock.`,
-            })
+            });
+            return true;
         } catch (error) {
             this._messageService.addMessage({
                 severity: 'error',
                 summary: 'Reward not added',
                 detail: 'Refer people to get more rewards.',
-            })
+            });
+            return false;
         }
     }
 

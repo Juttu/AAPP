@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import Login, {ILoginProps} from "components/auth/Login";
 import {useRecoilRefresher_UNSTABLE, useRecoilState, useRecoilValue, useRecoilValueLoadable} from "recoil";
 import {authState, messageState} from "recoil/atoms";
@@ -41,6 +41,7 @@ function Home() {
   const auth = useRecoilValue(authState);
   const [messages, setMessages] = useRecoilState(messageState);
   const userLoadable = useRecoilValueLoadable(currentUserQuery);
+  const [remainingRewards, setRemainingRewards] = useState(0);
   const refreshUserLoadable = useRecoilRefresher_UNSTABLE(currentUserQuery);
   const rewardService: RewardService = RewardService.Instance;
   const [referralLink, setReferralLink] = React.useState('');
@@ -48,6 +49,14 @@ function Home() {
   const onLoginSuccess = () => {
     refreshUserLoadable();
   }
+
+  useEffect(() => {
+    if (!auth.isLoggedIn) return;
+    const rewardService = RewardService.Instance;
+    rewardService.getRemainingRewards().then(remaining => {
+      setRemainingRewards(remaining);
+    });
+  }, [auth])
 
   useEffect(() => {
     if (userLoadable.state === 'hasValue' && auth.isLoggedIn) {
@@ -65,8 +74,18 @@ function Home() {
           detail: "You got no rewards, try spinning again!",
         },
       ])
+    } else if (remainingRewards === 0) {
+      setMessages([
+        ...messages,
+        {
+          severity: "error",
+          summary: "All rewards completed!",
+          detail: "Send a referral to earn more rewards!",
+        },
+      ])
     } else {
-      await rewardService.addUserReward({ reward });
+      const rewardAdded = await rewardService.addUserReward({ reward });
+      if (rewardAdded) setRemainingRewards(remainingRewards - 1);
     }
   }
 
@@ -74,7 +93,7 @@ function Home() {
     <SectionDiv className="flex justify-content-center">
       <div className="grid flex lg:flex-row-reverse justify-content-center my-8 align-items-center w-full h-full">
         <div className="flex flex-column align-items-center justify-content-center">
-          <Reward onSpinReward={onSpinReward} />
+          <Reward remainingRewards={remainingRewards} onSpinReward={onSpinReward} />
         </div>
         <div className="lg:w-6rem" />
         <div style={{ maxWidth: '600px' }}>
@@ -105,26 +124,36 @@ function Home() {
 
       </div>
 
-      <div className="grid mt-4 w-full">
+      <div className="text-black-alpha-90 grid mt-4 w-full">
         <div style={{
           backgroundImage: `url(${require('../assets/pay_bg.jpeg')})`,
-        }} className="col-12 lg:col-12 flex flex-column align-items-center justify-content-center">
-          <h2 className="mb-0">Track Expenses</h2>
-          <p className="text-center">Keep track of shared expenses, balances, and who owes who.</p>
-          <video autoPlay loop muted playsInline className="w-20rem" width="1000" height="580">
-            <source src={require('../assets/credit_withframe.mp4')} type="video/webm" />
-            <source src={require('assets/credit_withframe.mp4')} type="video/mp4" />
-          </video>
+        }} className="col-12 grid flex">
+          <div className="col-12 lg:col-6 flex flex-column align-items-center justify-content-center">
+            <h2 className="mb-0">Track Expenses</h2>
+            <p className="text-center">Keep track of shared expenses, balances, and who owes who.</p>
+            <div className="w-full flex justify-content-center" style={{ backgroundColor: "#101010", borderRadius: '25px' }}>
+              <video autoPlay loop muted playsInline className="w-20rem">
+                <source src={require('../assets/credit_withframe.mp4')} type="video/webm" />
+                <source src={require('assets/credit_withframe.mp4')} type="video/mp4" />
+              </video>
+            </div>
+          </div>
+          <div className="col-12 lg:col-6 flex justify-content-center align-items-center">Text goes here</div>
         </div>
         <div style={{
           backgroundImage: `url(${require('../assets/split.jpeg')})`,
-        }} className="col-12 lg:col-12 flex flex-column align-items-center justify-content-center">
-          <h2 className="mb-0">Track Expenses</h2>
-          <p className="text-center">Keep track of shared expenses, balances, and who owes who.</p>
-          <video autoPlay loop muted playsInline className="w-20rem" width="1000" height="700">
-            <source src={require('../assets/Spllit_bill_willframe.mp4')} type="video/webm" />
-            <source src={require('assets/Spllit_bill_willframe.mp4')} type="video/mp4" />
-          </video>
+        }} className="col-12 grid flex lg:flex-row-reverse">
+          <div className="col-12 lg:col-6 flex flex-column align-items-center justify-content-center">
+            <h2 className="mb-0">Track Expenses</h2>
+            <p className="text-center">Keep track of shared expenses, balances, and who owes who.</p>
+            <div className="w-full flex justify-content-center" style={{ backgroundColor: "#101010", borderRadius: '25px' }}>
+              <video autoPlay loop muted playsInline className="w-20rem">
+                <source src={require('../assets/Spllit_bill_willframe.mp4')} type="video/webm" />
+                <source src={require('assets/Spllit_bill_willframe.mp4')} type="video/mp4" />
+              </video>
+            </div>
+          </div>
+          <div className="col-12 lg:col-6 flex justify-content-center align-items-center">Text goes here</div>
         </div>
       </div>
     </SectionDiv>

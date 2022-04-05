@@ -2,38 +2,26 @@
 @import "primeflex/primeflex.css";
 @import "primeicons/primeicons.css";
 
+:root {
+  --primary-color: #F23467;
+  --surface-ground: #101010;
+}
+
 html {
   font-size: 1rem;
   height: 100%;
   scrollbar-color: var(--primary-color) transparent !important;
   scrollbar-width: thin !important;
 }
-.bg-primary {
-  background-color: #F23467 !important;
-  color: var(--primary-color-text) !important;
-}
-.p-button.p-button-help, .p-buttonset.p-button-help > .p-button, .p-splitbutton.p-button-help > .p-button, .p-fileupload-choose.p-button-help {
-  color: #ffffff;
-  background: #F23467;
-  border: 1px solid #F23467;
-}
+
 .p-button {
-  color: #ffffff;
-  background: #F23467;
-  border: 1px solid #F23467;
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
-  border-radius: 3px;
-}
-.p-menubar .p-menubar-root-list > .p-menuitem > .p-menuitem-link .p-menuitem-text {
-  color: #101010;
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
 }
 
 body {
   font-family: var(--font-family);
-  // background-color: var(--surface-ground);
-  background-color: #101010;
+  background-color: var(--surface-ground);
 
   color: var(--text-color);
   padding: 0;

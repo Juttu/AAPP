@@ -8,6 +8,7 @@ import {Button} from "primereact/button";
 import AuthService from "services/auth.service";
 import MyRewards from "components/user/MyRewards";
 import {Dialog} from "primereact/dialog";
+import {Link, useNavigate} from "react-router-dom";
 
 const CustomMenubar = styled(Menubar)`
   background-color: #F23467;
@@ -18,10 +19,21 @@ const CustomMenubar = styled(Menubar)`
   position: fixed;
   width: 100%;
   z-index: 999;
+  .p-menuitem-icon,
+  .p-menuitem-text {
+    color: var(--text-primary);
+  }
+  .p-menubar-button {
+    margin-left: 1rem;
+  }
   @media screen and ${devices.over.lg} {
-    justify-content: space-around;
+    .p-menubar-start {
+      width: 25%;
+      text-align: center;
+    }
     .p-menubar-end {
-      margin-left: 0;
+      margin-left: auto;
+      margin-right: 25%;
     }
   }
 `
@@ -35,7 +47,18 @@ const IconButton = styled(Button)`
 
 function TopBar() {
 
+  const template = (item: any, options: any) => {
+    return (
+      <Link to={`${item.url}`} role="menuitem" className={options.className} target={item.target}
+                onClick={options.onClick}>
+        <span className={options.iconClassName}/>
+        <span className="p-menuitem-text">{item.label}</span>
+      </Link>
+    );
+  }
+
   const auth = useRecoilValue(authState);
+  const history = useNavigate();
   const [rewardsDialog, setRewardsDialog] = React.useState(false);
   const authService: AuthService = AuthService.Instance;
   const items = [
@@ -46,6 +69,12 @@ function TopBar() {
         setRewardsDialog(true );
       }
     },
+    {
+      label: 'Custom',
+      icon: 'pi pi-fw pi-cog',
+      url: '/custom',
+      template
+    }
   ]
   return (
     <div className="w-full flex justify-content-center">
@@ -55,12 +84,17 @@ function TopBar() {
               onHide={() => setRewardsDialog(false)}>
         <MyRewards />
       </Dialog>
-      <CustomMenubar model={items as any} end={
+      <CustomMenubar model={items as any} start={
+        <div className="cursor-pointer" onClick={() => history("/")}>
+          <h1 className="my-0">payBIS</h1>
+        </div>
+      } end={
         <React.Fragment>
           {auth.isLoggedIn && <IconButton name="logout"
                                           icon="pi pi-sign-out"
                                           onClick={() => authService.logOut()}
-                                          className="p-button-rounded p-button-text"/>}
+                                          className="p-button-rounded"/>}
+
         </React.Fragment>
       } />
     </div>

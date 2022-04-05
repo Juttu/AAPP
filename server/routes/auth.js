@@ -1,9 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const twilio = require('twilio');
 const hotp = require('otplib').hotp;
 const UserModel = require('../models/user.model');
-const {F2S_API_KEY, OTP_SECRET} = require("../common/config");
+const {F2S_API_KEY} = require("../common/config");
 const {createJwtToken} = require("../utils/token.util");
 const RewardModel = require("../models/reward.model");
 const axios = require("axios");
@@ -27,7 +26,7 @@ async function updateReferral(referrer, referee) {
 }
 
 function generateOTP(user) {
-    return hotp.generate(OTP_SECRET, user.phone.counter + 1);
+    return hotp.generate(user.phone.number, user.phone.counter + 1);
 }
 
 async function sendOTP(user) {
@@ -77,7 +76,7 @@ router.post('/verifyOTP', async (req, res, next) => {
         });
     }
     const counter = user.phone.counter;
-    const verified = hotp.check(otp, OTP_SECRET, counter);
+    const verified = hotp.check(otp, user.phone.number, counter);
     if (!verified) {
         return next({
             status: 400,

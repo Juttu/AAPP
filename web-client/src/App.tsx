@@ -6,6 +6,7 @@ import {useRecoilState} from "recoil";
 import {messageState} from "recoil/atoms";
 import TopBar from "components/topbar/Topbar";
 import {IPrimeMessage} from "interfaces";
+import Custom from "pages/Custom";
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
       <Toast ref={toastRef} />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/custom" element={ <Custom /> } />
         <Route path="*" element={<Navigate to="/" />}/>
       </Routes>
     </React.Fragment>
