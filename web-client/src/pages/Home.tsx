@@ -10,6 +10,8 @@ import {InputText} from "primereact/inputtext";
 import {Button} from "primereact/button";
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import RewardService from "services/reward.service";
+import {Image} from "primereact/image";
+
 
 interface IAuthBlockProps {
   auth: any;
@@ -124,33 +126,91 @@ function Home() {
 
       </div>
 
-      <div className="text-black-alpha-90 grid mt-4 w-full">
+      <div className="text-black-alpha-90 grid mt-4 w-full ">
+      <div style={{textAlign:"center", height:"130px",
+          backgroundImage: `url(${require('../assets/white.jpeg')})`,
+        }} className="col-12 lg:col-12 flex flex-column align-items-center justify-content-center">
+          <h2 style={{textAlign:"center", fontFamily:"Lexend Deca,sans-serif",fontSize:"32px"}} className="mb-0">payBIS - Exclusively built for young adults to manage their money</h2>
+          
+          
+        </div>
+        {/* <div style={{textAlign:"center", height:"100px",
+          backgroundColor: "#262629",
+        }} className="col-12 lg:col-12 flex flex-column align-items-center justify-content-center">
+          <h2 style={{textAlign:"center", fontFamily:"Lexend Deca,sans-serif",fontSize:"32px",color:"white"}} className="mb-0">payBIS - Exclusively built for young adults to manage their money</h2>
+          
+          
+        </div> */}
         <div style={{
-          backgroundImage: `url(${require('../assets/pay_bg.jpeg')})`,
+          backgroundImage: `url(${require('../assets/c1.png')})`,
         }} className="col-12 grid flex">
           <div className="col-12 lg:col-6 flex flex-column align-items-center justify-content-center">
-            <h2 className="mb-0">Track Expenses</h2>
-            <p className="text-center">Keep track of shared expenses, balances, and who owes who.</p>
+            {/* <h2 className="mb-0">Track Expenses</h2> */}
+            {/* <p className="text-center">Keep track of shared expenses, balances, and who owes who.</p> */}
             <div className="w-full flex justify-content-center" style={{ backgroundColor: "#101010", borderRadius: '25px' }}>
               <video autoPlay loop muted playsInline className="w-20rem">
-                <source src={require('../assets/credit_withframe.mp4')} type="video/webm" />
-                <source src={require('assets/credit_withframe.mp4')} type="video/mp4" />
+                <source src={require('../assets/credit1.mp4')} type="video/webm" />
+                <source src={require('assets/credit1.mp4')} type="video/mp4" />
+              </video>
+            </div>
+          </div>
+          <div style={{textAlign:"center", fontFamily:"Lexend Deca,sans-serif",fontSize:"42px"}} className="col-12 lg:col-6 flex justify-content-center align-items-center">Pay using Bank account or UPI Credit anywhere.</div>
+        </div>
+        <div style={{
+          backgroundImage: `url(${require('../assets/c2.png')})`,
+        }} className="col-12 grid flex lg:flex-row-reverse">
+          <div className="col-12 lg:col-6 flex flex-column align-items-center justify-content-center">
+            {/* <h2 className="mb-0">Track Expenses</h2> */}
+            {/* <p className="text-center">Keep track of shared expenses, balances, and who owes who.</p> */}
+            <div className="w-full flex justify-content-center" style={{ backgroundColor: "#101010", borderRadius: '25px' }}>
+              <video autoPlay loop muted playsInline className="w-20rem">
+                <source src={require('../assets/Spllit_bill_willframe.mp4')} type="video/webm" />
+                <source src={require('assets/Spllit_bill_willframe.mp4')} type="video/mp4" />
+              </video>
+            </div>
+          </div>
+          <div style={{textAlign:"center", fontFamily:"Lexend Deca,sans-serif",fontSize:"42px"}} className="col-12 lg:col-6 flex justify-content-center align-items-center">Split bills instantly at the time of payment.</div>
+        </div>
+        <div style={{
+          backgroundImage: `url(${require('../assets/c1.png')})`,
+        }} className="col-12 grid flex">
+          <div className="col-12 lg:col-6 flex flex-column align-items-center justify-content-center">
+            {/* <h2 className="mb-0">Track Expenses</h2> */}
+            {/* <p className="text-center">Keep track of shared expenses, balances, and who owes who.</p> */}
+            <div className="w-full flex justify-content-center" style={{ backgroundColor: "#101010", borderRadius: '25px' }}>
+              <video autoPlay loop muted playsInline className="w-20rem">
+                <source src={require('../assets/budget.mp4')} type="video/webm" />
+                <source src={require('assets/budget.mp4')} type="video/mp4" />
               </video>
             </div>
           </div>
           <div className="col-12 lg:col-6 flex justify-content-center align-items-center">Text goes here</div>
         </div>
         <div style={{
-          backgroundImage: `url(${require('../assets/split.jpeg')})`,
+          backgroundImage: `url(${require('../assets/c2.png')})`,
         }} className="col-12 grid flex lg:flex-row-reverse">
           <div className="col-12 lg:col-6 flex flex-column align-items-center justify-content-center">
-            <h2 className="mb-0">Track Expenses</h2>
-            <p className="text-center">Keep track of shared expenses, balances, and who owes who.</p>
+            {/* <h2 className="mb-0">Track Expenses</h2> */}
+            {/* <p className="text-center">Keep track of shared expenses, balances, and who owes who.</p> */}
             <div className="w-full flex justify-content-center" style={{ backgroundColor: "#101010", borderRadius: '25px' }}>
               <video autoPlay loop muted playsInline className="w-20rem">
-                <source src={require('../assets/Spllit_bill_willframe.mp4')} type="video/webm" />
-                <source src={require('assets/Spllit_bill_willframe.mp4')} type="video/mp4" />
+                <source src={require('../assets/invest.mp4')} type="video/webm" />
+                <source src={require('assets/invest.mp4')} type="video/mp4" />
               </video>
+            </div>
+          </div>
+          <div className="col-12 lg:col-6 flex justify-content-center align-items-center">Text goes here</div>
+        </div>
+        <div style={{
+          backgroundImage: `url(${require('../assets/c1.png')})`,
+        }} className="col-12 grid flex">
+          <div className="col-12 lg:col-6 flex flex-column align-items-center justify-content-center">
+            {/* <h2 className="mb-0">Track Expenses</h2> */}
+            {/* <p className="text-center">Keep track of shared expenses, balances, and who owes who.</p> */}
+            <div className="w-full flex justify-content-center" style={{ backgroundColor: "#101010", borderRadius: '25px' }}>
+             
+              <Image className="mt-2" src={require('../assets/c1.png')} alt=""/>
+
             </div>
           </div>
           <div className="col-12 lg:col-6 flex justify-content-center align-items-center">Text goes here</div>

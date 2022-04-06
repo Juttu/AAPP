@@ -11,11 +11,11 @@ import {Dialog} from "primereact/dialog";
 import {Link, useNavigate} from "react-router-dom";
 
 const CustomMenubar = styled(Menubar)`
-  background-color: #F23467;
+  background-color: #de1f54;
   border: 0;
   border-bottom: 1px solid var(--surface-card);
-  height: 4rem;
-  border-radius: 0 0 6px 6px;
+  height: 4.5rem;
+  border-radius: 0 0 0px 0px;
   position: fixed;
   width: 100%;
   z-index: 999;
