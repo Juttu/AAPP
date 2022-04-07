@@ -134,13 +134,6 @@ function Home() {
           
           
         </div>
-        {/* <div style={{textAlign:"center", height:"100px",
-          backgroundColor: "#262629",
-        }} className="col-12 lg:col-12 flex flex-column align-items-center justify-content-center">
-          <h2 style={{textAlign:"center", fontFamily:"Lexend Deca,sans-serif",fontSize:"32px",color:"white"}} className="mb-0">payBIS - Exclusively built for young adults to manage their money</h2>
-          
-          
-        </div> */}
         <div style={{
           backgroundImage: `url(${require('../assets/c1.png')})`,
         }} className="col-12 grid flex">
@@ -154,7 +147,10 @@ function Home() {
               </video>
             </div>
           </div>
-          <div style={{textAlign:"center", fontFamily:"Lexend Deca,sans-serif",fontSize:"42px"}} className="col-12 lg:col-6 flex justify-content-center align-items-center">Pay using Bank account or UPI Credit anywhere.</div>
+          <div style={{textAlign:"center", fontFamily:"Lexend Deca,sans-serif",fontSize:"42px"}} className="col-12 lg:col-6 flex justify-content-center align-items-center">Pay using Bank account or UPI Credit anywhere. 
+              <div style={{textAlign:"center", fontFamily:"Lexend Deca,sans-serif",fontSize:"20px"}} className="col-12 lg:col-6 flex justify-content-center align-items-center">No need to wait for micro-loan approvals when you can pay instantly with our UPI credit at a very low interest rate.</div>
+</div>
+          
         </div>
         <div style={{
           backgroundImage: `url(${require('../assets/c2.png')})`,
@@ -169,7 +165,10 @@ function Home() {
               </video>
             </div>
           </div>
-          <div style={{textAlign:"center", fontFamily:"Lexend Deca,sans-serif",fontSize:"42px"}} className="col-12 lg:col-6 flex justify-content-center align-items-center">Split bills instantly at the time of payment.</div>
+          <div style={{textAlign:"center", fontFamily:"Lexend Deca,sans-serif",fontSize:"42px"}} className="col-12 lg:col-6 flex justify-content-center align-items-center">Split your bills 
+              <div style={{textAlign:"center", fontFamily:"Lexend Deca,sans-serif",fontSize:"20px"}} className="col-12 lg:col-6 flex justify-content-center align-items-center">No more hesitation to ask your money back from your friends. 
+Simply split the bill instantly at the time of payment, payBIS will remind them.</div>
+</div>
         </div>
         <div style={{
           backgroundImage: `url(${require('../assets/c1.png')})`,
@@ -184,8 +183,9 @@ function Home() {
               </video>
             </div>
           </div>
-          <div className="col-12 lg:col-6 flex justify-content-center align-items-center">Text goes here</div>
-        </div>
+          <div style={{textAlign:"center", fontFamily:"Lexend Deca,sans-serif",fontSize:"42px"}} className="col-12 lg:col-6 flex justify-content-center align-items-center">Make a Quick Budget 
+              <div style={{textAlign:"center", fontFamily:"Lexend Deca,sans-serif",fontSize:"20px"}} className="col-12 lg:col-6 flex justify-content-center align-items-center">Step away from traditional budget plan, with our 3 - Step Budgeting process keep track of your expenses, investments while also limiting your expenses. Get stock rewards and much more when you create a budget.</div>
+          </div>        </div>
         <div style={{
           backgroundImage: `url(${require('../assets/c2.png')})`,
         }} className="col-12 grid flex lg:flex-row-reverse">
@@ -199,8 +199,9 @@ function Home() {
               </video>
             </div>
           </div>
-          <div className="col-12 lg:col-6 flex justify-content-center align-items-center">Text goes here</div>
-        </div>
+          <div style={{textAlign:"center", fontFamily:"Lexend Deca,sans-serif",fontSize:"42px"}} className="col-12 lg:col-6 flex justify-content-center align-items-center">Investing made easy 
+              <div style={{textAlign:"center", fontFamily:"Lexend Deca,sans-serif",fontSize:"20px"}} className="col-12 lg:col-6 flex justify-content-center align-items-center">Having trouble wrapping your head around stocks and crypto???...Simply invest in expert created portfolios and track them in payBIS.</div>
+          </div>        </div>
         <div style={{
           backgroundImage: `url(${require('../assets/c1.png')})`,
         }} className="col-12 grid flex">
@@ -209,12 +210,13 @@ function Home() {
             {/* <p className="text-center">Keep track of shared expenses, balances, and who owes who.</p> */}
             <div className="w-full flex justify-content-center" style={{ backgroundColor: "#101010", borderRadius: '25px' }}>
              
-              <Image className="mt-2" src={require('../assets/c1.png')} alt=""/>
+              <Image className="mt-2" src={require('../assets/friends_investments.png')} alt=""/>
 
             </div>
           </div>
-          <div className="col-12 lg:col-6 flex justify-content-center align-items-center">Text goes here</div>
-        </div>
+          <div style={{textAlign:"center", fontFamily:"Lexend Deca,sans-serif",fontSize:"42px"}} className="col-12 lg:col-6 flex justify-content-center align-items-center">Socialising Investments
+              <div style={{textAlign:"center", fontFamily:"Lexend Deca,sans-serif",fontSize:"20px"}} className="col-12 lg:col-6 flex justify-content-center align-items-center">Confused where to invest ??...With payBIS you can view, react, and directly invest in the portfolios invested by your friends</div>
+          </div>         </div>
       </div>
     </SectionDiv>
   )
