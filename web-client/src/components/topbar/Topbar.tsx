@@ -86,7 +86,9 @@ function TopBar() {
       </Dialog>
       <CustomMenubar model={items as any} start={
         <div className="cursor-pointer" onClick={() => history("/")}>
-          <h1 className="my-0">payBIS</h1>
+          {/* <h1 className="my-0">payBIS</h1> */}
+          <div style={{color:"white",textAlign:"center", fontFamily:"Lexend Deca,sans-serif",fontSize:"20px"}} className="my-0"><h1>payBIS</h1> </div>
+
         </div>
       } end={
         <React.Fragment>

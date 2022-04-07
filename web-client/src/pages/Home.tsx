@@ -99,7 +99,8 @@ function Home() {
         </div>
         <div className="lg:w-6rem" />
         <div style={{ maxWidth: '600px' }}>
-          <h1 style={{fontSize:'100px', color:'white'}} className="text-center lg:text-left">payBIS</h1>
+          {/* <h1 style={{fontSize:'100px', color:'white'}} className="text-center lg:text-left">payBIS</h1> */}
+          <div style={{color:"white",textAlign:"center", fontFamily:"Lexend Deca,sans-serif",fontSize:"60px"}} className="text-center lg:text-left"><h1>payBIS</h1> </div>
           <AuthBlock auth={auth} loading={userLoadable.state === 'loading'}
                      login={{onLoginSuccess}} />
           {auth.isLoggedIn && auth.isRegistered && userLoadable.state === 'hasValue' && userLoadable.contents && <React.Fragment>

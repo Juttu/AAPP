@@ -7,7 +7,7 @@ import {authState, messageState} from "recoil/atoms";
 const list = [
   {
     name: "TATA Motors",
-    image: 'https://w7.pngwing.com/pngs/1018/823/png-transparent-tata-motors-logo-car-tamo-racemo-philippines-car-blue-text-logo-thumbnail.png'
+    image: 'https://i.pinimg.com/originals/5b/ac/94/5bac942d02e70ce67498bf2ff04efe97.png'
   },
   {
     name: "ITC Limited",
@@ -15,11 +15,11 @@ const list = [
   },
   {
     name: "SBI",
-    image: 'https://pixlok.com/wp-content/uploads/2021/04/SBI-Logo-PNG-768x768.jpg'
+    image: 'https://www.freepnglogos.com/uploads/sbi-logo-png/sbi-logo-state-bank-india-group-vector-eps-0.png'
   },
   {
     name: "Tesla",
-    image: 'http://assets.stickpng.com/images/580b585b2edbce24c47b2cc9.png'
+    image: 'https://upload.wikimedia.org/wikipedia/commons/e/e8/Tesla_logo.png'
   },
   {
     name: "Netflix",
@@ -27,7 +27,7 @@ const list = [
   },
   {
     name: "RETRY",
-    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSuWuJr0lxph3mVviehH4gq7mndEy5SggKAZBODDechraCX9sFxFR_yxOH6D2ifsY1vmI&usqp=CAU'
+    image: 'http://cdn.onlinewebfonts.com/svg/img_401439.png'
   }
 ];
 
@@ -120,7 +120,7 @@ function Reward({onSpinReward, remainingRewards}: { onSpinReward: (arg0: string)
         className="w-20rem lg:w-30rem"
         style={{transform: 'rotate(90deg)'}}
       >
-        <g fill="white" stroke='#60dab3' strokeWidth="10">
+        <g fill="white" stroke='#60dab3' strokeWidth="12">
           <circle cx="250" cy="250" r={r}/>
         </g>
         <animated.g
@@ -137,7 +137,7 @@ function Reward({onSpinReward, remainingRewards}: { onSpinReward: (arg0: string)
         <g fill="black">
           <circle cx="250" cy="250" r="5"/>
         </g>
-        <g fill="lime" stroke="purple" strokeWidth="2">
+        <g fill="#f23467" stroke="white" strokeWidth="1.5">
           <polygon points="250,70 230,30 270,30"/>
         </g>
       </svg>
@@ -157,8 +157,8 @@ const PressButton = ({setPower}: any) => {
         ...messages,
         {
           severity: "error",
-          summary: "Unauthenticated",
-          detail: "Please login to spin the wheel",
+          summary: "Join Early Access",
+          detail: "Join Early Access to spin me and win stock rewards ",
         },
       ])
       return;
@@ -168,8 +168,8 @@ const PressButton = ({setPower}: any) => {
         ...messages,
         {
           severity: "error",
-          summary: "Not registered",
-          detail: "Please register to spin the wheel",
+          summary: "Fill details",
+          detail: "Tell me your name to spin me",
         },
       ])
       return;
@@ -179,7 +179,7 @@ const PressButton = ({setPower}: any) => {
 
   return (
     <div className="flex flex-column align-items-center mb-2">
-      <Button label="Reward me!"
+      <Button label="Spin me!"
               onClick={onSpinClick}
       />
     </div>
