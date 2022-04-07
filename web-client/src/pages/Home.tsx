@@ -11,6 +11,16 @@ import {Button} from "primereact/button";
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import RewardService from "services/reward.service";
 import {Image} from "primereact/image";
+import {
+  
+  RedditShareButton,
+  TelegramShareButton,
+ 
+  TwitterShareButton,
+  
+  WhatsappShareButton,
+  WhatsappIcon
+} from "react-share";
 
 
 interface IAuthBlockProps {
@@ -122,6 +132,13 @@ function Home() {
                       </div>
                   </div>
               </CopyToClipboard>
+
+              <WhatsappShareButton url={referralLink} title={"Share this link to get a chance to spin more"}>
+              <div className="text-center lg:text-left"><WhatsappIcon size={40}></WhatsappIcon> </div>
+
+                
+                </WhatsappShareButton> 
+
           </React.Fragment>}
         </div>
 
