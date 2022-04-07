@@ -1,7 +1,7 @@
 import React from "react";
 import {useEffect, useState} from "react";
 import RewardService from "services/reward.service";
-
+import "./box.css"
 function MyRewards() {
 
   const rewardService: RewardService = RewardService.Instance;
@@ -19,7 +19,8 @@ function MyRewards() {
       {rewards.map((reward, idx) => {
         return (
           <div key={idx}>
-            <h3>{reward}</h3>
+            <div className="card card-1"><h3 style={{color:"black"}}>{reward}</h3></div>
+            
           </div>
         );
       })}
