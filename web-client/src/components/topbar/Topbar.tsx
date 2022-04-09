@@ -91,9 +91,12 @@ function TopBar() {
       label: 'Let\'s build payBIS together',
       template: (item: any, options: any) => {
         return (
-          <PopupButton id="QQw2Wm4I" className={classNames(options.className, 'bg-white border-white mx-5')} size={60} style={{fontSize: 20, borderRadius: '20px'}} >
-            <span className={classNames(options.iconClassName, 'text-white')}/>
-            <span className="p-menuitem-text text-black-alpha-90">{item.label}</span>
+          <PopupButton id="QQw2Wm4I"
+                       as={Button as any}
+                       className='bg-white cursor-pointer border-white mx-5 p-2'
+                       size={60}
+                       style={{fontSize: 20, borderRadius: '20px'}} >
+            <span className="text-black-alpha-90">{item.label}</span>
           </PopupButton>
         );
       },
@@ -108,20 +111,20 @@ function TopBar() {
         <MyRewards />
       </Dialog>
       <CustomMenubar model={items as any} start={
-        <div className="cursor-pointer" onClick={() => history("/")}>
+        <div className="cursor-pointer hidden lg:inline-block" onClick={() => history("/")}>
           {/* <h1 className="my-0">payBIS</h1> */}
           <div style={{color:"white",textAlign:"center", fontSize:"20px"}} className="my-0"><h1>payBIS</h1> </div>
 
         </div>
       } end={
         <React.Fragment>
-          {!auth.isLoggedIn && <Button onClick={() => {
+          {!auth.isLoggedIn && <span onClick={() => {
                                          window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
                                        }}
-                                       className='bg-white border-white mr-2 text-black-alpha-90'
+                                       className='bg-white p-2 cursor-pointer border-white mr-2 text-black-alpha-90'
                                        style={{fontSize: 20, borderRadius: '20px'}} >
               Join Early Access
-          </Button>}
+          </span>}
           {auth.isLoggedIn && <IconButton name="logout"
                                           icon="pi pi-sign-out"
                                           onClick={() => authService.logOut()}
