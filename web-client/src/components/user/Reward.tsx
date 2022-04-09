@@ -148,32 +148,7 @@ function Reward({onSpinReward, remainingRewards}: { onSpinReward: (arg0: string)
 
 const PressButton = ({setPower}: any) => {
 
-  const [auth] = useRecoilState(authState);
-  const [messages, setMessages] = useRecoilState(messageState);
-
   const onSpinClick = () => {
-    if (!auth.isLoggedIn) {
-      setMessages([
-        ...messages,
-        {
-          severity: "error",
-          summary: "Join Early Access",
-          detail: "Join Early Access to spin me and win stock rewards ",
-        },
-      ])
-      return;
-    }
-    if (!auth.isRegistered) {
-      setMessages([
-        ...messages,
-        {
-          severity: "error",
-          summary: "Fill details",
-          detail: "Tell me your name to spin me",
-        },
-      ])
-      return;
-    }
     setPower((Math.random() * 100) + 50);
   }
 

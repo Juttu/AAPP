@@ -38,7 +38,7 @@ function PhoneInput({ onSubmit }: { onSubmit: (phone: string) => void }) {
             </div>
             <small className="p-error">{getFormErrorMessage(formik, 'phone')}</small>
             {/* <h1 className="text-center lg:text-left">Get a chance to win an amazing stock just by joining the waitlist</h1> */}
-            <div style={{color:"white",textAlign:"center", fontFamily:"Lexend Deca,sans-serif",fontSize:"10px"}} className="text-center lg:text-left"><h1>Get a chance to win an amazing stock just by joining the waitlist</h1> </div>
+            <div style={{color:"white",textAlign:"center",fontSize:"10px"}} className="text-center lg:text-left"><h1>Get a chance to win an amazing stock just by joining the waitlist</h1> </div>
 
 </form>
     )

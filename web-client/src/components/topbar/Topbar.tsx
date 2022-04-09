@@ -9,6 +9,8 @@ import AuthService from "services/auth.service";
 import MyRewards from "components/user/MyRewards";
 import {Dialog} from "primereact/dialog";
 import {Link, useNavigate} from "react-router-dom";
+import {classNames} from "primereact/utils";
+import {PopupButton} from "@typeform/embed-react";
 
 const CustomMenubar = styled(Menubar)`
   background-color: #de1f54;
@@ -31,9 +33,11 @@ const CustomMenubar = styled(Menubar)`
       width: 25%;
       text-align: center;
     }
-    .p-menubar-end {
+    .p-menubar-root-list {
       margin-left: auto;
-      margin-right: 25%;
+    }
+    .p-menubar-end {
+      margin-left: 0;
     }
   }
 `
@@ -51,7 +55,7 @@ function TopBar() {
     return (
       <Link to={`${item.url}`} role="menuitem" className={options.className} target={item.target}
                 onClick={options.onClick}>
-        <span className={options.iconClassName}/>
+        <span className={classNames(options.iconClassName, 'text-white')}/>
         <span className="p-menuitem-text">{item.label}</span>
       </Link>
     );
@@ -65,6 +69,14 @@ function TopBar() {
     auth.isLoggedIn && {
       label: 'My rewards',
       icon: 'pi pi-fw pi-star',
+      template: (item: any, options: any) => {
+        return (
+          <div role="menuitem" className={classNames(options.className, 'border-primary w-full')} onClick={options.onClick}>
+            <span className={classNames(options.iconClassName, 'text-white')}/>
+            <span className="p-menuitem-text">{item.label}</span>
+          </div>
+        );
+      },
       command: () => {
         setRewardsDialog(true );
       }
@@ -74,6 +86,17 @@ function TopBar() {
       icon: 'pi pi-fw pi-cog',
       url: '/custom',
       template
+    },
+    {
+      label: 'Let\'s build payBIS together',
+      template: (item: any, options: any) => {
+        return (
+          <PopupButton id="QQw2Wm4I" className={classNames(options.className, 'bg-white border-white mx-5')} size={60} style={{fontSize: 20, borderRadius: '20px'}} >
+            <span className={classNames(options.iconClassName, 'text-white')}/>
+            <span className="p-menuitem-text text-black-alpha-90">{item.label}</span>
+          </PopupButton>
+        );
+      },
     }
   ]
   return (
@@ -87,15 +110,22 @@ function TopBar() {
       <CustomMenubar model={items as any} start={
         <div className="cursor-pointer" onClick={() => history("/")}>
           {/* <h1 className="my-0">payBIS</h1> */}
-          <div style={{color:"white",textAlign:"center", fontFamily:"Lexend Deca,sans-serif",fontSize:"20px"}} className="my-0"><h1>payBIS</h1> </div>
+          <div style={{color:"white",textAlign:"center", fontSize:"20px"}} className="my-0"><h1>payBIS</h1> </div>
 
         </div>
       } end={
         <React.Fragment>
+          {!auth.isLoggedIn && <Button onClick={() => {
+                                         window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+                                       }}
+                                       className='bg-white border-white mr-2 text-black-alpha-90'
+                                       style={{fontSize: 20, borderRadius: '20px'}} >
+              Join Early Access
+          </Button>}
           {auth.isLoggedIn && <IconButton name="logout"
                                           icon="pi pi-sign-out"
                                           onClick={() => authService.logOut()}
-                                          className="p-button-rounded"/>}
+                                          className="mb-1 p-button-rounded p-button-text text-white"/>}
 
         </React.Fragment>
       } />

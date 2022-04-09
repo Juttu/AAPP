@@ -1,15 +1,19 @@
 import React from "react";
 import  "./styles.scss";
-import "./script.js"
+import {PopupButton} from "@typeform/embed-react";
 
 
 function Custom() {
 
 
   
-  return <button data-tf-slider="wLftItmg" data-tf-width={550} data-tf-iframe-props="title=Contact" data-tf-medium="snippet" style={{all: 'unset', fontFamily: 'Helvetica,Arial,sans-serif', display: 'inline-block', maxWidth: '100%', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', backgroundColor: '#0445AF', color: '#FFFFFF', fontSize: '20px', borderRadius: '25px', padding: '0 33px', fontWeight: 'bold', height: '50px', cursor: 'pointer', lineHeight: '50px', textAlign: 'center', margin: 0, textDecoration: 'none'}}>Lets build this together</button>
-
-;
+  return (
+    <div className="mt-4 h-full">
+      <PopupButton id="QQw2Wm4I" style={{fontSize: 20}} className="my-auto">
+        click to open form in popup
+      </PopupButton>
+    </div>
+  )
 }
 
 export default Custom;

@@ -1,10 +1,20 @@
 @import "primereact/resources/primereact.min.css";
 @import "primeflex/primeflex.css";
 @import "primeicons/primeicons.css";
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@200;300;400&display=swap');
 
 :root {
   --primary-color: #F23467;
   --surface-ground: #101010;
+  --font-family: 'Lexend Deca', sans-serif;
+}
+
+* {
+  font-family: var(--font-family);
+}
+
+.p-component {
+  font-family: var(--font-family);
 }
 
 html {
@@ -20,7 +30,6 @@ html {
 }
 
 body {
-  font-family: var(--font-family);
   background-color: var(--surface-ground);
 
   color: var(--text-color);
