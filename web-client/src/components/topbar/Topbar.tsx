@@ -82,7 +82,7 @@ function TopBar() {
       }
     },
     {
-      label: 'Custom',
+      label: 'Content',
       icon: 'pi pi-fw pi-cog',
       url: '/custom',
       template
@@ -95,8 +95,8 @@ function TopBar() {
                        as={Button as any}
                        className='bg-white cursor-pointer border-white mx-5 p-2'
                        size={60}
-                       style={{fontSize: 20, borderRadius: '20px'}} >
-            <span className="text-black-alpha-90">{item.label}</span>
+                       style={{fontSize: 13, borderRadius: '18px', width:"210px"}} >
+            <span style={{fontSize:"15px", fontWeight:"bold"}} className="text-black-alpha-90">{item.label}</span>
           </PopupButton>
         );
       },
@@ -122,7 +122,7 @@ function TopBar() {
                                          window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
                                        }}
                                        className='bg-white p-2 cursor-pointer border-white mr-2 text-black-alpha-90'
-                                       style={{fontSize: 20, borderRadius: '20px'}} >
+                                       style={{fontSize: 15, borderRadius: '18px',fontWeight:"bold"}} >
               Join Early Access
           </span>}
           {auth.isLoggedIn && <IconButton name="logout"

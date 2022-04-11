@@ -19,7 +19,14 @@ import {
   TwitterShareButton,
 
   WhatsappShareButton,
-  WhatsappIcon
+  WhatsappIcon,
+  LinkedinShareButton,
+  LinkedinIcon,
+  FacebookIcon,
+  FacebookShareButton,
+  TwitterIcon,
+  EmailIcon,
+  EmailShareButton
 } from "react-share";
 import {classNames} from "primereact/utils";
 
@@ -56,7 +63,7 @@ function InfoSection({bgImg, imgUrl, vidUrl, title, description, isEven}: any) {
          style={{backgroundImage: `url(${bgImg})`}}>
       <div className="col-12 lg:col-6 flex flex-column align-items-center justify-content-center">
         <div className="w-full flex justify-content-center"
-             style={{backgroundColor: "#101010", borderRadius: '25px'}}>
+             style={{backgroundColor: "#101010", borderRadius: '25px',marginLeft:"0px"}}>
           {vidUrl && <video autoPlay loop muted playsInline className="w-20rem">
               <source src={vidUrl['webm']} type="video/webm"/>
               <source src={vidUrl['mp4']} type="video/mp4"/>
@@ -65,11 +72,11 @@ function InfoSection({bgImg, imgUrl, vidUrl, title, description, isEven}: any) {
         </div>
       </div>
       <div className="col-12 lg:col-6 text-black-alpha-90 flex flex-column justify-content-center align-items-center">
-        <div style={{fontSize: "46px"}}
+        <div style={{fontSize: "40px", fontWeight:"900"}}
              className="text-center">
           {title}
         </div>
-        <div style={{fontSize: "30px", width: '80%'}}
+        <div style={{fontSize: "21px", width: '80%',color:"#262629"}}
              className="mt-8 mx-auto">
           {description}
         </div>
@@ -162,7 +169,7 @@ function Home() {
         </div>
         <div className="lg:w-6rem"/>
         <div style={{maxWidth: '600px'}}>
-          <div style={{color: "white", textAlign: "center"}}
+          <div style={{fontSize:"55px", color: "white", textAlign: "center"}}
                className="text-center lg:text-left"><h1>payBIS</h1></div>
           <AuthBlock auth={auth} loading={userLoadable.state === 'loading'}
                      login={{onLoginSuccess}}/>
@@ -190,9 +197,27 @@ function Home() {
                   <div className="bg-white mt-4 flex justify-content-center align-items-center"
                        style={{borderRadius: '20px'}}>
                       <WhatsappShareButton url={referralLink} title={"Share this link to get a chance to spin more"}>
-                          <div className="text-center lg:text-left mt-1 mr-2"><WhatsappIcon
+                          <div className="text-center lg:text-left mt-1 mr-4"><WhatsappIcon
                               style={{borderRadius: '50%'}} size={40}/></div>
                       </WhatsappShareButton>
+                      <LinkedinShareButton url={referralLink} title={"Share this link to get a chance to spin more"}>
+                          <div className="text-center lg:text-left mt-1 mr-4"><LinkedinIcon
+                              style={{borderRadius: '50%'}} size={40}/></div>
+                      </LinkedinShareButton>
+                      <EmailShareButton url={referralLink} title={"Share this link to get a chance to spin more"}>
+                          <div className="text-center lg:text-left mt-1 mr-4"><EmailIcon
+                              style={{borderRadius: '50%'}} size={40}/></div>
+                      </EmailShareButton>
+                      <FacebookShareButton url={referralLink} title={"Share this link to get a chance to spin more"}>
+                          <div className="text-center lg:text-left mt-1 mr-4"><FacebookIcon
+                              style={{borderRadius: '50%'}} size={40}/></div>
+                      </FacebookShareButton>
+                      <TwitterShareButton url={referralLink} title={"Share this link to get a chance to spin more"}>
+                          <div className="text-center lg:text-left mt-1 mr-4"><TwitterIcon
+                              style={{borderRadius: '50%'}} size={40}/></div>
+                      </TwitterShareButton>
+                    
+                      
                   </div>
 
               </React.Fragment>}
@@ -200,7 +225,7 @@ function Home() {
       </div>
       <div className="text-black-alpha-90 text-center w-full flex justify-content-center align-items-center bg-white"
            style={{height: "130px"}}>
-        <h2 style={{textAlign: "center", fontSize: "32px"}}
+        <h2 style={{textAlign: "center", fontSize: "35px"}}
             className="my-0">payBIS - Exclusively built for young adults to manage their money</h2>
       </div>
 
@@ -229,7 +254,7 @@ function Home() {
 
       <InfoSection
         bgImg={require("../assets/c2.png")}
-        vidUrl={{ mp4: require("../assets/invest.mp4"), webm: require("../assets/invest.mp4") }}
+        vidUrl={{ mp4: require("../assets/invest_resized.mp4"), webm: require("../assets/invest_resized.mp4") }}
         title="Investing made easy"
         description="Having trouble wrapping your head around stocks and crypto???...Simply invest in expert created portfolios and track them in payBIS."
       />
