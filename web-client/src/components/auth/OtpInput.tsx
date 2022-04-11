@@ -27,7 +27,7 @@ function OtpInput({ onSubmit }: { onSubmit: (otp: string) => void }) {
     });
 
     return (
-        <form onSubmit={formik.handleSubmit} className="flex flex-column align-items-center">
+        <form onSubmit={formik.handleSubmit} className="flex flex-column align-items-center mx-2">
             <div className="field p-inputgroup">
                 <InputText id="otp" name="otp" placeholder="OTP*" value={formik.values.otp} onChange={formik.handleChange} autoFocus
                            className={classNames({ 'p-invalid': isFormFieldValid(formik,'otp') })}/>

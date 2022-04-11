@@ -28,16 +28,16 @@ function PhoneInput({ onSubmit }: { onSubmit: (phone: string) => void }) {
     });
 
     return (
-        <form onSubmit={formik.handleSubmit} className="flex flex-column align-items-center">
+        <form onSubmit={formik.handleSubmit} className="flex flex-column align-items-center mx-2">
             <div className="field p-inputgroup">
                 <span className="p-inputgroup-addon bg-primary">+91</span>
                 <InputText style={{height:'45px'}} id="phone" name="phone" placeholder="Phone*" value={formik.values.phone}
                            onChange={formik.handleChange} autoFocus
                            className={classNames({'p-invalid': isFormFieldValid(formik, 'phone')})}/>
-                <Button label="Get early access" type="submit"/>
+                <Button className="hidden lg:block" label="Get early access" type="submit"/>
             </div>
+            <Button className="block lg:hidden" label="Get early access" type="submit"/>
             <small className="p-error">{getFormErrorMessage(formik, 'phone')}</small>
-            {/* <h1 className="text-center lg:text-left">Get a chance to win an amazing stock just by joining the waitlist</h1> */}
             <div style={{color:"#DCDCDC",textAlign:"center",fontSize:"10px"}} className="text-center lg:text-left"><h1>Get a chance to win an amazing stock just by joining the waitlist</h1> </div>
 
 </form>

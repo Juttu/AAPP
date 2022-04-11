@@ -17,7 +17,7 @@ const CustomMenubar = styled(Menubar)`
   border: 0;
   border-bottom: 1px solid var(--surface-card);
   height: 4.5rem;
-  border-radius: 0 0 0px 0px;
+  border-radius: 0;
   position: fixed;
   width: 100%;
   z-index: 999;
@@ -89,7 +89,7 @@ function TopBar() {
     },
     {
       label: 'Let\'s build payBIS together',
-      template: (item: any, options: any) => {
+      template: (item: any) => {
         return (
           <PopupButton id="wLftItmg"
                        as={Button as any}

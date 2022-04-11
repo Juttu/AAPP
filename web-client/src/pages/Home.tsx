@@ -12,12 +12,7 @@ import {CopyToClipboard} from 'react-copy-to-clipboard';
 import RewardService from "services/reward.service";
 import {Image} from "primereact/image";
 import {
-
-  RedditShareButton,
-  TelegramShareButton,
-
   TwitterShareButton,
-
   WhatsappShareButton,
   WhatsappIcon,
   LinkedinShareButton,
@@ -63,7 +58,7 @@ function InfoSection({bgImg, imgUrl, vidUrl, title, description, isEven}: any) {
          style={{backgroundImage: `url(${bgImg})`}}>
       <div className="col-12 lg:col-6 flex flex-column align-items-center justify-content-center">
         <div className="w-full flex justify-content-center"
-             style={{backgroundColor: "#101010", borderRadius: '25px',marginLeft:"0px"}}>
+             style={{backgroundColor: "#101010", borderRadius: '25px'}}>
           {vidUrl && <video autoPlay loop muted playsInline className="w-20rem">
               <source src={vidUrl['webm']} type="video/webm"/>
               <source src={vidUrl['mp4']} type="video/mp4"/>
@@ -72,11 +67,11 @@ function InfoSection({bgImg, imgUrl, vidUrl, title, description, isEven}: any) {
         </div>
       </div>
       <div className="col-12 lg:col-6 text-black-alpha-90 flex flex-column justify-content-center align-items-center">
-        <div style={{fontSize: "40px", fontWeight:"900", marginTop:"100px"}}
+        <div style={{fontSize: "40px", fontWeight: "900", marginTop: "100px"}}
              className="text-center">
           {title}
         </div>
-        <div style={{fontSize: "21px", width: '80%',color:"#262629"}}
+        <div style={{fontSize: "21px", width: '80%', color: "#262629"}}
              className="mt-8 mx-auto">
           {description}
         </div>
@@ -169,8 +164,8 @@ function Home() {
         </div>
         <div className="lg:w-6rem"/>
         <div style={{maxWidth: '600px'}}>
-          <div style={{fontSize:"55px", color: "white", textAlign: "center"}}
-               className="text-center lg:text-left"><h1>payBIS</h1></div>
+          <div style={{color: "white", textAlign: "center"}}
+               className="text-center lg:text-left text-6xl lg:text-7xl"><h1>payBIS</h1></div>
           <AuthBlock auth={auth} loading={userLoadable.state === 'loading'}
                      login={{onLoginSuccess}}/>
           {auth.isLoggedIn && auth.isRegistered && userLoadable.state === 'hasValue' && userLoadable.contents &&
@@ -216,8 +211,8 @@ function Home() {
                           <div className="text-center lg:text-left mt-1 mr-4"><TwitterIcon
                               style={{borderRadius: '50%'}} size={40}/></div>
                       </TwitterShareButton>
-                    
-                      
+
+
                   </div>
 
               </React.Fragment>}
@@ -231,7 +226,7 @@ function Home() {
 
       <InfoSection
         bgImg={require("../assets/c1.png")}
-        vidUrl={{ mp4: require("../assets/credit1.mp4"), webm: require("../assets/credit1.mp4") }}
+        vidUrl={{mp4: require("../assets/credit1.mp4"), webm: require("../assets/credit1.mp4")}}
         title="Pay using Bank account or UPI Credit anywhere"
         isEven
         description="No need to wait for micro-loan approvals when you can pay instantly with our UPI credit at a very low interest rate."
@@ -239,14 +234,17 @@ function Home() {
 
       <InfoSection
         bgImg={require("../assets/c2.png")}
-        vidUrl={{ mp4: require("../assets/Spllit_bill_willframe.mp4"), webm: require("../assets/Spllit_bill_willframe.mp4") }}
+        vidUrl={{
+          mp4: require("../assets/Spllit_bill_willframe.mp4"),
+          webm: require("../assets/Spllit_bill_willframe.mp4")
+        }}
         title="Split your bills"
         description="No more hesitation to ask your money back from your friends. Simply split the bill instantly at the time of payment, payBIS will remind them."
       />
 
       <InfoSection
         bgImg={require("../assets/c1.png")}
-        vidUrl={{ mp4: require("../assets/budget_resized.mp4"), webm: require("../assets/budget_resized.mp4") }}
+        vidUrl={{mp4: require("../assets/budget_resized.mp4"), webm: require("../assets/budget_resized.mp4")}}
         title="Make a Quick Budget"
         isEven
         description="Step away from traditional budget plan, with our 3 - Step Budgeting process keep track of your expenses, investments while also limiting your expenses. Get stock rewards and much more when you create a budget"
@@ -254,7 +252,7 @@ function Home() {
 
       <InfoSection
         bgImg={require("../assets/c2.png")}
-        vidUrl={{ mp4: require("../assets/invest_resized.mp4"), webm: require("../assets/invest_resized.mp4") }}
+        vidUrl={{mp4: require("../assets/invest_resized.mp4"), webm: require("../assets/invest_resized.mp4")}}
         title="Investing made easy"
         description="Having trouble wrapping your head around stocks and crypto???...Simply invest in expert created portfolios and track them in payBIS."
       />
