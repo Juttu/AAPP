@@ -1,8 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {animated, useSpring} from 'react-spring';
 import {Button} from "primereact/button";
-import {useRecoilState} from "recoil";
-import {authState, messageState} from "recoil/atoms";
 
 const list = [
   {

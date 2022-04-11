@@ -86,20 +86,6 @@ function TopBar() {
       icon: 'pi pi-fw pi-cog',
       url: '/custom',
       template
-    },
-    {
-      label: 'Let\'s build payBIS together',
-      template: (item: any) => {
-        return (
-          <PopupButton id="wLftItmg"
-                       as={Button as any}
-                       className='bg-white cursor-pointer border-white mx-5 p-2'
-                       size={60}
-                       style={{fontSize: 13, borderRadius: '18px', width:"210px"}} >
-            <span style={{fontSize:"15px", fontWeight:"bold"}} className="text-black-alpha-90">{item.label}</span>
-          </PopupButton>
-        );
-      },
     }
   ]
   return (
@@ -117,11 +103,20 @@ function TopBar() {
 
         </div>
       } end={
-        <React.Fragment>
+        <div className="flex justify-content-center align-items-center">
+          <PopupButton id="wLftItmg"
+                       as={Button as any}
+                       className='bg-white cursor-pointer border-white mx-5 p-2'
+                       size={60}
+                       style={{fontSize: 13, borderRadius: '18px', width:"210px"}} >
+            <span style={{fontSize:"15px", fontWeight:"bold"}} className="text-black-alpha-90">
+              Let&apos;s build payBIS together
+            </span>
+          </PopupButton>
           {!auth.isLoggedIn && <span onClick={() => {
                                          window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
                                        }}
-                                       className='bg-white p-2 cursor-pointer border-white mr-2 text-black-alpha-90'
+                                       className='bg-white p-2 cursor-pointer text-center border-white mr-2 text-black-alpha-90'
                                        style={{fontSize: 15, borderRadius: '18px',fontWeight:"bold"}} >
               Join Early Access
           </span>}
@@ -130,7 +125,7 @@ function TopBar() {
                                           onClick={() => authService.logOut()}
                                           className="mb-1 p-button-rounded p-button-text text-white"/>}
 
-        </React.Fragment>
+        </div>
       } />
     </div>
   );
