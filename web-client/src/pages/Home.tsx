@@ -72,7 +72,7 @@ function InfoSection({bgImg, imgUrl, vidUrl, title, description, isEven}: any) {
         </div>
       </div>
       <div className="col-12 lg:col-6 text-black-alpha-90 flex flex-column justify-content-center align-items-center">
-        <div style={{fontSize: "40px", fontWeight:"900"}}
+        <div style={{fontSize: "40px", fontWeight:"900", marginTop:"100px"}}
              className="text-center">
           {title}
         </div>
@@ -225,7 +225,7 @@ function Home() {
       </div>
       <div className="text-black-alpha-90 text-center w-full flex justify-content-center align-items-center bg-white"
            style={{height: "130px"}}>
-        <h2 style={{textAlign: "center", fontSize: "35px"}}
+        <h2 style={{textAlign: "center", fontSize: "30px"}}
             className="my-0">payBIS - Exclusively built for young adults to manage their money</h2>
       </div>
 
