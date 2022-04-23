@@ -20,7 +20,14 @@ if (NODE_ENV === "DEV") {
     app.use(morgan("dev"));
 }
 
-app.use(cors());
+app.use(cors({
+    origin: [
+        'http://54.234.105.91',
+        'https://54.234.105.91',
+        'http://paybis.club',
+        'https://paybis.club',
+    ]
+}));
 app.use(bodyParser.urlencoded({
     extended: true
 }));
