@@ -24,8 +24,8 @@ app.use(cors({
     origin: [
         'http://54.234.105.91',
         'https://54.234.105.91',
-        'http://paybis.club',
-        'https://paybis.club',
+        'http://www.paybis.club',
+        'https://www.paybis.club',
     ]
 }));
 app.use(bodyParser.urlencoded({
