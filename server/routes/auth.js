@@ -41,9 +41,8 @@ async function sendOTP(user) {
             'Authorization': F2S_API_KEY
         },
         data: {
-            "route": "v3",
-            "sender_id": "payBIS",
-            "message": `Your 6-digit OTP is ${otp} for early access to the app.`,
+            "route": "otp",
+            "variables_values": `${otp}. Use this to gain access to the early access program of payBIS.`,
             "numbers": `${phone}`
         }
     }
