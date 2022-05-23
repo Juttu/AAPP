@@ -42,7 +42,7 @@ async function sendOTP(user) {
         },
         data: {
             "route": "otp",
-            "variables_values": `${otp}. Use this to gain access to the early access program of payBIS.`,
+            "variables_values": `${otp}`,
             "numbers": `${phone}`
         }
     }
